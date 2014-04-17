@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DMRequest"
-  s.version          = "0.1.0"
+  s.version          = "0.0.1"
   s.summary          = "iOS block based HTTP request library."
   s.homepage         = "https://github.com/JohnnyDevMode/dm-request"
   s.license          = 'MIT'
