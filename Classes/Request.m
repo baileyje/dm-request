@@ -169,6 +169,7 @@ static NSMutableArray*  requests;
     }
     [requests addObject:self];
     self.currentDelegate = [[ConnectionDelegate alloc] initWith:self];
+    request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
     [NSURLConnection connectionWithRequest:request delegate:self.currentDelegate];
 
 }
