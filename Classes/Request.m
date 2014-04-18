@@ -3,10 +3,6 @@
 #import "Response.h"
 #import "ParamBuilder.h"
 
-typedef enum {
-    HttpMethodGet, HttpMethodPost
-} HttpMethod;
-
 @interface ConnectionDelegate : NSObject <NSURLConnectionDelegate>
 
 @property(nonatomic, strong) Request *request;

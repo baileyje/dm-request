@@ -2,14 +2,18 @@
 #import "Resource.h"
 #import "CallbackChain.h"
 
-@class Response;
-@class Request;
+typedef enum {
+    HttpMethodGet, HttpMethodPost
+} HttpMethod;
+
+@class Response, Request;
 
 typedef NSData* (^BodyBuilder)();
 
 typedef void (^RequestCallback)(Request* request, Callable next);
 
 typedef void (^ResponseCallback)(Response* response, Callable next);
+
 
 @interface Request : Resource
 
