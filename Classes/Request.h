@@ -6,7 +6,7 @@ typedef enum {
     HttpMethodGet, HttpMethodPost
 } HttpMethod;
 
-@class Response, Request;
+@class Response, Request, Connection;
 
 typedef NSData* (^BodyBuilder)();
 
@@ -33,7 +33,7 @@ typedef void (^ResponseCallback)(Response* response, Callable next);
 
 -(Request *)intercept:(ResponseCallback)callback;
 
--(Request *)status:(int)status call:(ResponseCallback)callback;
+-(Request *)on:(int)status call:(ResponseCallback)callback;
 
 -(Request *)success:(ResponseCallback)callback;
 
@@ -49,6 +49,6 @@ typedef void (^ResponseCallback)(Response* response, Callable next);
 
 -(Request *)auth:(RequestCallback)authenticator;
 
--(void)fetch;
+-(Connection*)fetch;
 
 @end

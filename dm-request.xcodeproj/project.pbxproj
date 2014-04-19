@@ -15,6 +15,7 @@
 		88BE254B63B0DC972B3774DA /* CallbackChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2BD9E616664C7927DD43 /* CallbackChain.m */; };
 		88BE257B531727A496512D34 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2E9BC9980B6027118AEE /* Request.m */; };
 		88BE25A7645C383FFBCBB59A /* JsonResponseCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2235CD7D878D8B54B944 /* JsonResponseCallback.m */; };
+		88BE26F1F64D2A49074BB999 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE274E5FBD9E35BB545D47 /* Connection.m */; };
 		88BE2773596CEF2D9DE83BE6 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE21CDFD1B14E7C959D86E /* NSMutableArray+Queue.m */; };
 		88BE28BD032086139F6CD21E /* NSArray+Reduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2555BE625DAB54D0F629 /* NSArray+Reduce.m */; };
 		88BE2A7AFECF1F9119AAE161 /* ParamBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2C86507AED1B203C636D /* ParamBuilder.m */; };
@@ -48,6 +49,7 @@
 		88BE221DCEF1D6A26D390F6B /* BufferingResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BufferingResponseCallback.m; sourceTree = "<group>"; };
 		88BE2235CD7D878D8B54B944 /* JsonResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonResponseCallback.m; sourceTree = "<group>"; };
 		88BE228826F1526DE452B6F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		88BE22BF82C32762DC0ABF22 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		88BE239E7AA19B288184CA93 /* BasicAuthRequestInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicAuthRequestInitializer.h; sourceTree = "<group>"; };
 		88BE23E9E62AD7F9DB87715C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88BE24680766BA2879BA1D6F /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		88BE267C41E94D6C5F6861D0 /* NSMutableArray+Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Queue.h"; sourceTree = "<group>"; };
 		88BE272A86649414F7628B0F /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		88BE274270855C116B3C7E53 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		88BE274E5FBD9E35BB545D47 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		88BE27D118CB781CD9704D2D /* StringResponseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringResponseCallback.h; sourceTree = "<group>"; };
 		88BE27E5CAE6E12F2EFD16E6 /* Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Response.h; sourceTree = "<group>"; };
 		88BE28014C10C0949EBEC4BB /* StringResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringResponseCallback.m; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 				88BE2EA65931886176D8E30F /* HttpCommon.h */,
 				88BE2D70CFC75732E8099D3A /* ParamBuilder.h */,
 				88BE2C86507AED1B203C636D /* ParamBuilder.m */,
+				88BE274E5FBD9E35BB545D47 /* Connection.m */,
+				88BE22BF82C32762DC0ABF22 /* Connection.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				88BE257B531727A496512D34 /* Request.m in Sources */,
 				88BE20D90F89879F4E802B35 /* Response.m in Sources */,
 				88BE2A7AFECF1F9119AAE161 /* ParamBuilder.m in Sources */,
+				88BE26F1F64D2A49074BB999 /* Connection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

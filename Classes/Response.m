@@ -32,6 +32,8 @@
     return self;
 }
 
+#pragma mark - package
+
 - (void)handle:(NSData *)data {
     for (ResponseDataCallback callback in self.dataCallbacks) callback(data);
 }

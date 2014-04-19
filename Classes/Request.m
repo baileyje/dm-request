@@ -2,15 +2,8 @@
 #import "Utils.h"
 #import "Response.h"
 #import "ParamBuilder.h"
+#import "Connection.h"
 
-@interface ConnectionDelegate : NSObject <NSURLConnectionDelegate>
-
-@property(nonatomic, strong) Request *request;
-@property(nonatomic, strong) Response *response;
-
-- (id)initWith:(Request *)request;
-
-@end
 
 @interface Request ()
 @property(nonatomic, strong) NSURL *url;
@@ -22,16 +15,14 @@
 @property(nonatomic, strong) NSMutableArray *requestCallbacks;
 @property(nonatomic, strong) NSMutableDictionary *responseInterceptors;
 @property(nonatomic, strong) NSMutableDictionary *responseCallbacks;
-@property(nonatomic, strong) ConnectionDelegate *currentDelegate;
+@end
+
+@interface Connection (internals)
+- (id)initWith:(Request *)request;
+- (void)connect:(NSURLRequest*)request;
 @end
 
 @implementation Request
-
-static NSMutableArray*  requests;
-
-+(void)initialize {
-    requests = [NSMutableArray array];
-}
 
 + (Request *)get:(NSString *)url {
     return [[Request alloc] initWith:url method:HttpMethodGet];
@@ -39,19 +30,6 @@ static NSMutableArray*  requests;
 
 + (Request *)post:(NSString *)url {
     return [[Request alloc] initWith:url method:HttpMethodPost];
-}
-
-- (id)initWith:(NSString *)url method:(HttpMethod)method {
-    self = [super init];
-    self.url = [NSURL URLWithString:url];
-    self.method = method;
-    self.params = [NSMutableDictionary dictionary];
-    self.headers = [NSMutableDictionary dictionary];
-    self.cookies = [NSMutableArray array];
-    self.requestCallbacks = [NSMutableArray array];
-    self.responseInterceptors = [NSMutableDictionary dictionary];
-    self.responseCallbacks = [NSMutableDictionary dictionary];
-    return self;
 }
 
 - (Request *)body:(BodyBuilder)bodyBuilder {
@@ -95,24 +73,24 @@ static NSMutableArray*  requests;
     return [self intercept:5 call:callback];
 }
 
-- (Request *)status:(int)status call:(ResponseCallback)callback {
+- (Request *)on:(int)status call:(ResponseCallback)callback {
     return [self registerResponseCallback:callback status:status registry:self.responseCallbacks];
 }
 
 - (Request *)success:(ResponseCallback)callback {
-    return [self status:2 call:callback];
+    return [self on:2 call:callback];
 }
 
 - (Request *)redirect:(ResponseCallback)callback {
-    return [self status:2 call:callback];
+    return [self on:2 call:callback];
 }
 
 - (Request *)clientError:(ResponseCallback)callback {
-    return [self status:4 call:callback];
+    return [self on:4 call:callback];
 }
 
 - (Request *)serverError:(ResponseCallback)callback {
-    return [self status:5 call:callback];
+    return [self on:5 call:callback];
 }
 
 - (Request *)error:(ResponseCallback)callback {
@@ -132,14 +110,32 @@ static NSMutableArray*  requests;
     return self;
 }
 
-- (void)fetch {
+- (Connection*)fetch {
+    Connection* connection = [[Connection alloc] initWith:self];
     [[[CallbackChain alloc] initWith:self callbacks:[self.requestCallbacks arrayByAddingObject:^(Request *request, Callable next) {
-        [request connect];
+        [request connect:connection];
     }]] next];
+    return connection;
 }
 
-- (void)connect {
+- (id)initWith:(NSString *)url method:(HttpMethod)method {
+    self = [super init];
+    self.url = [NSURL URLWithString:url];
+    self.method = method;
+    self.params = [NSMutableDictionary dictionary];
+    self.headers = [NSMutableDictionary dictionary];
+    self.cookies = [NSMutableArray array];
+    self.requestCallbacks = [NSMutableArray array];
+    self.responseInterceptors = [NSMutableDictionary dictionary];
+    self.responseCallbacks = [NSMutableDictionary dictionary];
+    return self;
+}
+
+#pragma mark - package private
+
+- (void)connect:(Connection*)connection {
     BodyBuilder bodyBuilder = self.bodyBuilder;
+    NSURL* url = self.url;
     if (self.params.count) {
         if (bodyBuilder || self.method == HttpMethodGet) {
             NSString *query = self.url.query;
@@ -148,12 +144,12 @@ static NSMutableArray*  requests;
             } else {
                 query = [query stringByAppendingFormat:@"&%@", [ParamBuilder for:self.params]];
             }
-            self.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self.url.absoluteString componentsSeparatedByString:@"?"] objectAtIndex:0], query]];
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?%@", [[self.url.absoluteString componentsSeparatedByString:@"?"] objectAtIndex:0], query]];
         } else {
             bodyBuilder = [ParamBuilder for:self.params request:self];
         }
     }
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:self.method == HttpMethodPost ? @"POST" : @"GET"];
     NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:self.headers];
     [headers addEntriesFromDictionary:[NSHTTPCookie requestHeaderFieldsWithCookies:self.cookies]];
@@ -163,12 +159,20 @@ static NSMutableArray*  requests;
     if (bodyBuilder) {
         [request setHTTPBody:bodyBuilder()];
     }
-    [requests addObject:self];
-    self.currentDelegate = [[ConnectionDelegate alloc] initWith:self];
     request.cachePolicy = NSURLRequestReloadIgnoringCacheData;
-    [NSURLConnection connectionWithRequest:request delegate:self.currentDelegate];
-
+    [connection connect:request];
 }
+
+- (CallbackChain *)buildResponseChain:(Response *)response {
+    int status = response.response.statusCode;
+    NSMutableArray *allCallbacks = [NSMutableArray array];
+    [self fillResponseCallbacksFor:status from:self.responseInterceptors into:allCallbacks];
+    [self fillResponseCallbacksFor:status from:self.responseCallbacks into:allCallbacks];
+    CallbackChain *chain = [[CallbackChain alloc] initWith:response callbacks:allCallbacks];
+    return chain;
+}
+
+#pragma mark - private
 
 - (Request *)registerResponseCallback:(ResponseCallback)callback status:(int)status registry:(NSMutableDictionary *)registry {
     [Utils notNull:@"callback" value:callback];
@@ -182,55 +186,11 @@ static NSMutableArray*  requests;
     return self;
 }
 
-- (CallbackChain *)buildResponseChain:(Response *)response {
-    int status = response.response.statusCode;
-    NSMutableArray *allCallbacks = [NSMutableArray array];
-    [self fillResponseCallbacksFor:status from:self.responseInterceptors into:allCallbacks];
-    [self fillResponseCallbacksFor:status from:self.responseCallbacks into:allCallbacks];
-    CallbackChain *chain = [[CallbackChain alloc] initWith:response callbacks:allCallbacks];
-    return chain;
-}
-
 - (void)fillResponseCallbacksFor:(int)statusCode from:(NSDictionary *)registry into:(NSMutableArray *)into {
     for (int status = statusCode; status > 0; status /= 10) {
         NSArray *callbacks = registry[[NSNumber numberWithInt:status]];
         if (callbacks) [into addObjectsFromArray:callbacks];
     }
-}
-
-@end
-
-@interface Response (hack)
-- (void)handle:(NSData *)data;
-
-- (void)complete;
-
-- (void)handleError:(NSError *)error;
-@end
-
-@implementation ConnectionDelegate
-
-- (id)initWith:(Request *)request {
-    self = [super init];
-    self.request = request;
-    return self;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)httpResponse {
-    self.response = [[Response alloc] initWith:httpResponse];
-    [[self.request buildResponseChain:self.response] next];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [self.response handle:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [self.response handleError:error];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [self.response complete];
 }
 
 @end

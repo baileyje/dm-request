@@ -10,8 +10,9 @@
         [response data:^(NSData *data) {
             [buffer appendData:data];
         }];
+        __weak Response* _response = response;
         [response end:^{
-            callback(response, buffer);
+            callback(_response, buffer);
         }];
         next();
     };
