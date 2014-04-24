@@ -1,16 +1,16 @@
-#import "CallbackChain.h"
-#import "Resource.h"
+#import "DMCallbackChain.h"
+#import "DMResource.h"
 #import "NSMutableArray+Queue.h"
 
-@interface CallbackChain()
-@property (nonatomic, strong) Resource* resource;
+@interface DMCallbackChain ()
+@property (nonatomic, strong) DMResource* resource;
 @property (nonatomic, strong) NSMutableArray* callbacks;
 @end
 
 
-@implementation CallbackChain
+@implementation DMCallbackChain
 
--(id)initWith:(Resource*)resource callbacks:(NSArray *)callbacks {
+-(id)initWith:(DMResource*)resource callbacks:(NSArray *)callbacks {
     self = [super init];
     self.resource = resource;
     self.callbacks = [NSMutableArray arrayWithArray:callbacks];
@@ -18,7 +18,7 @@
 }
 
 -(void)next {
-    ChainedCallback callback = [self.callbacks dequeue];
+    DMChainedCallback callback = [self.callbacks dequeue];
     if(!callback) {
         [self done];
     } else {

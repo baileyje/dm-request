@@ -1,24 +1,24 @@
-#import "Connection.h"
-#import "Request.h"
-#include "Response.h"
+#import "DMConnection.h"
+#import "DMRequest.h"
+#include "DMResponse.h"
 
-@interface Connection() <NSURLConnectionDelegate>
-@property(nonatomic, strong) Request *request;
+@interface DMConnection () <NSURLConnectionDelegate>
+@property(nonatomic, strong) DMRequest*request;
 @property(nonatomic, strong) NSURLConnection *delegate;
-@property(nonatomic, strong) Response *response;
+@property(nonatomic, strong) DMResponse*response;
 @end
 
-@interface Request (package)
-- (CallbackChain *)buildResponseChain:(Response *)response;
+@interface DMRequest (package)
+- (DMCallbackChain*)buildResponseChain:(DMResponse*)response;
 @end
 
-@interface Response (package)
+@interface DMResponse (package)
 - (void)handle:(NSData *)data;
 - (void)complete;
 - (void)handleError:(NSError *)error;
 @end
 
-@implementation Connection {
+@implementation DMConnection {
     BOOL canceled;
 }
 
@@ -32,7 +32,7 @@
 
 #pragma mark - package
 
-- (id)initWith:(Request *)request {
+- (id)initWith:(DMRequest*)request {
     self = [super init];
     self.request = request;
     return self;
@@ -48,7 +48,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)httpResponse {
     if(canceled) return;
-    self.response = [[Response alloc] initWith:httpResponse];
+    self.response = [[DMResponse alloc] initWith:httpResponse];
     [[self.request buildResponseChain:self.response] next];
 }
 

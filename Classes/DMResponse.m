@@ -1,12 +1,12 @@
-#import "Response.h"
+#import "DMResponse.h"
 
-@interface Response ()
+@interface DMResponse ()
 @property(nonatomic, strong) NSMutableArray *dataCallbacks;
 @property(nonatomic, strong) NSMutableArray *endCallbacks;
 @property(nonatomic, strong) NSMutableArray *errorCallbacks;
 @end
 
-@implementation Response
+@implementation DMResponse
 
 - (id)initWith:(NSHTTPURLResponse *)response {
     self = [super init];
@@ -17,17 +17,17 @@
     return self;
 }
 
-- (Response *)data:(ResponseDataCallback)dataCallback {
+- (DMResponse*)data:(DMResponseDataCallback)dataCallback {
     [self.dataCallbacks addObject:dataCallback];
     return self;
 }
 
-- (Response *)end:(Callable)endCallback {
+- (DMResponse*)end:(Callable)endCallback {
     [self.endCallbacks addObject:endCallback];
     return self;
 }
 
-- (Response *)error:(ErrorCallback)callback {
+- (DMResponse*)error:(ErrorCallback)callback {
     [self.errorCallbacks addObject:callback];
     return self;
 }
@@ -35,7 +35,7 @@
 #pragma mark - package
 
 - (void)handle:(NSData *)data {
-    for (ResponseDataCallback callback in self.dataCallbacks) callback(data);
+    for (DMResponseDataCallback callback in self.dataCallbacks) callback(data);
 }
 
 - (void)complete {

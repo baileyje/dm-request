@@ -1,9 +1,9 @@
-#import "JsonBodyBuilder.h"
+#import "DMJsonBodyBuilder.h"
 
 
-@implementation JsonBodyBuilder
+@implementation DMJsonBodyBuilder
 
-+(BodyBuilder)with:(NSObject *)object request:(Request *)request {
++(DMBodyBuilder)with:(NSObject *)object request:(DMRequest*)request {
     [request header:@"Content-Type" value:@"application/json"];
     return ^NSData *() {
         NSError * error;

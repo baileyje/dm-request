@@ -1,0 +1,9 @@
+#import <Foundation/Foundation.h>
+#import "DMRequest.h"
+
+
+@interface DMStringResponseCallback : NSObject
+
++ (DMResponseCallback)with:(void (^)(DMResponse* response, NSString *string))handler;
+
+@end

@@ -1,10 +1,10 @@
-#import "Resource.h"
+#import "DMResource.h"
 
-@interface Resource ()
+@interface DMResource ()
 @property(nonatomic, strong) NSMutableDictionary *attributes;
 @end
 
-@implementation Resource
+@implementation DMResource
 
 - (id)init {
     self = [super init];

@@ -1,0 +1,21 @@
+#import "DMBufferingResponseCallback.h"
+#import "DMResponse.h"
+
+
+@implementation DMBufferingResponseCallback
+
++ (DMResponseCallback)with:(void (^)(DMResponse* response, NSData *buffer))callback {
+    return ^(DMResponse*response, Callable next) {
+        NSMutableData *buffer = [NSMutableData data];
+        [response data:^(NSData *data) {
+            [buffer appendData:data];
+        }];
+        __weak DMResponse* _response = response;
+        [response end:^{
+            callback(_response, buffer);
+        }];
+        next();
+    };
+}
+
+@end

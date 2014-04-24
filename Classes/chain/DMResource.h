@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Resource : NSObject
+@interface DMResource : NSObject
 
 -(NSObject *)attribute:(NSString *)name;
 

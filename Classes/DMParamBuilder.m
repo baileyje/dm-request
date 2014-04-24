@@ -1,6 +1,6 @@
-#import "ParamBuilder.h"
+#import "DMParamBuilder.h"
 
-@implementation ParamBuilder
+@implementation DMParamBuilder
 
 NSString * encode(NSString * string) {
     return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
@@ -19,7 +19,7 @@ NSString * encode(NSString * string) {
     return [parts componentsJoinedByString:@"&"];
 }
 
-+(BodyBuilder)for:(NSDictionary *)params request:(Request *)request {
++(DMBodyBuilder)for:(NSDictionary *)params request:(DMRequest*)request {
     [request header:@"Content-Type" value:@"application/x-www-form-urlencoded"];
     return ^NSData *() {
         return [[self for:params] dataUsingEncoding:NSUTF8StringEncoding];
