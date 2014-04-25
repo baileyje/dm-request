@@ -17,8 +17,8 @@ Pod::Spec.new do |spec|
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.authors = {
-    'John E. Bailey': 'john@devmode.com',
-    'Sean M. Duncan': 'sean@devmode.com'
+    'John E. Bailey' => 'john@devmode.com',
+    'Sean M. Duncan' => 'sean@devmode.com'
   }
   spec.social_media_url = 'http://twitter.com/DevModeInc'
 
