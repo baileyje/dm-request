@@ -82,7 +82,7 @@
 }
 
 - (DMRequest*)redirect:(DMResponseCallback)callback {
-    return [self on:2 call:callback];
+    return [self on:3 call:callback];
 }
 
 - (DMRequest*)clientError:(DMResponseCallback)callback {
