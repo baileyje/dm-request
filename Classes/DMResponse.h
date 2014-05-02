@@ -18,4 +18,8 @@ typedef void (^DMResponseDataCallback)(NSData * data);
 
 - (DMResponse*)error:(ErrorCallback)callback;
 
+- (int)statusCode;
+
+- (long long int)expectedContentLength;
+
 @end

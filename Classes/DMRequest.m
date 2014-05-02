@@ -4,6 +4,9 @@
 #import "DMParamBuilder.h"
 #import "DMConnection.h"
 
+typedef enum {
+    HttpMethodGet, HttpMethodPost, HttpMethodPut, HttpMethodDelete, HttpMethodPatch, HttpMethodHead
+} HttpMethod;
 
 @interface DMRequest ()
 @property(nonatomic, strong) NSURL *url;
@@ -32,11 +35,23 @@
     return [[DMRequest alloc] initWith:url method:HttpMethodPost];
 }
 
++ (DMRequest*)put:(NSString *)url {
+    return [[DMRequest alloc] initWith:url method:HttpMethodPut];
+}
+
++ (DMRequest*)patch:(NSString *)url {
+    return [[DMRequest alloc] initWith:url method:HttpMethodPatch];
+}
+
++ (DMRequest*)delete:(NSString *)url {
+    return [[DMRequest alloc] initWith:url method:HttpMethodDelete];
+}
+
 - (DMRequest*)body:(DMBodyBuilder)bodyBuilder {
     if (self.bodyBuilder) {
         [NSException raise:@"Illegal state" format:@"Body callback already set."];
     }
-    if (!self.method == HttpMethodPost) {
+    if (self.method == HttpMethodGet) {
         [NSException raise:@"Illegal state" format:@"Http method does not support a body."];
     }
     self.bodyBuilder = bodyBuilder;
@@ -150,7 +165,29 @@
         }
     }
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:self.method == HttpMethodPost ? @"POST" : @"GET"];
+    NSString* method;
+    switch (self.method) {
+        case HttpMethodPost: {
+            method = @"POST";
+            break;
+        } case HttpMethodPut: {
+            method = @"PUT";
+            break;
+        } case HttpMethodPatch: {
+            method = @"PATCH";
+            break;
+        } case HttpMethodDelete: {
+            method = @"DELETE";
+            break;
+        } case HttpMethodHead: {
+            method = @"HEAD";
+            break;
+        } default: {
+            method = @"GET";
+            break;
+        }
+    }
+    [request setHTTPMethod:method];
     NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:self.headers];
     [headers addEntriesFromDictionary:[NSHTTPCookie requestHeaderFieldsWithCookies:self.cookies]];
     [headers enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString *value, BOOL *stop) {
@@ -164,7 +201,7 @@
 }
 
 - (DMCallbackChain*)buildResponseChain:(DMResponse*)response {
-    int status = response.response.statusCode;
+    int status = response.statusCode;
     NSMutableArray *allCallbacks = [NSMutableArray array];
     [self fillResponseCallbacksFor:status from:self.responseInterceptors into:allCallbacks];
     [self fillResponseCallbacksFor:status from:self.responseCallbacks into:allCallbacks];

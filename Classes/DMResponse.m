@@ -32,6 +32,14 @@
     return self;
 }
 
+- (int)statusCode {
+    return self.response.statusCode;
+}
+
+- (long long int)expectedContentLength {
+    return self.response.expectedContentLength;
+}
+
 #pragma mark - package
 
 - (void)handle:(NSData *)data {

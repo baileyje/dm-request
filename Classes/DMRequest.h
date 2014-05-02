@@ -2,9 +2,6 @@
 #import "DMResource.h"
 #import "DMCallbackChain.h"
 
-typedef enum {
-    HttpMethodGet, HttpMethodPost
-} HttpMethod;
 
 @class DMResponse, DMRequest, DMConnection;
 
@@ -20,6 +17,14 @@ typedef void (^DMResponseCallback)(DMResponse* response, Callable next);
 +(DMRequest*)get:(NSString *)url;
 
 +(DMRequest*)post:(NSString *)url;
+
++(DMRequest*)put:(NSString *)url;
+
++(DMRequest*)patch:(NSString *)url;
+
++(DMRequest*)delete:(NSString *)url;
+
++(DMRequest*)head:(NSString *)url;
 
 -(DMRequest*)body:(DMBodyBuilder)bodyBuilder;
 
