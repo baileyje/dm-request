@@ -2,14 +2,14 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name = 'DMRequest'
-  spec.version = '0.1.2'
+  spec.version = '0.1.3'
   spec.summary = 'A block-based iOS HTTP request library'
   spec.description = <<-DESC
     DMRequest is a block-based HTTP request library for iOS that is flexible,
     expressive and low-ceremony.
   DESC
   spec.homepage = 'http://github.com/devmode/dm-request'
-
+  spec.documentation_url = 'http://github.com/devmode/dm-request'
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.license = { :type => 'MIT', :file => 'LICENSE-MIT' }
