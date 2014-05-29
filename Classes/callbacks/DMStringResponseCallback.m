@@ -5,7 +5,7 @@
 
 @implementation DMStringResponseCallback
 
-+(DMResponseCallback)with:(void(^)(DMResponse* response, NSString* string))callback {
++ (DMResponseCallback)with:(void(^)(DMResponse*, NSString*))callback {
     return [DMBufferingResponseCallback with:^(DMResponse* response, NSData* data) {
         callback(response, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }];

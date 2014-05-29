@@ -3,9 +3,9 @@
 #include "DMResponse.h"
 
 @interface DMConnection () <NSURLConnectionDelegate>
-@property(nonatomic, strong) DMRequest*request;
-@property(nonatomic, strong) NSURLConnection *delegate;
-@property(nonatomic, strong) DMResponse*response;
+@property(nonatomic, strong) DMRequest* request;
+@property(nonatomic, strong) NSURLConnection* delegate;
+@property(nonatomic, strong) DMResponse* response;
 @end
 
 @interface DMRequest (package)
@@ -13,9 +13,9 @@
 @end
 
 @interface DMResponse (package)
-- (void)handle:(NSData *)data;
+- (void)handle:(NSData*)data;
 - (void)complete;
-- (void)handleError:(NSError *)error;
+- (void)handleError:(NSError*)error;
 @end
 
 @implementation DMConnection {
@@ -33,8 +33,9 @@
 #pragma mark - package
 
 - (id)initWith:(DMRequest*)request {
-    self = [super init];
-    self.request = request;
+    if(self = [super init]) {
+        self.request = request;
+    }
     return self;
 }
 
@@ -46,25 +47,25 @@
 
 #pragma mark - NSURLConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)httpResponse {
+- (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSHTTPURLResponse*)httpResponse {
     if(canceled) return;
     self.response = [[DMResponse alloc] initWith:httpResponse];
     [[self.request buildResponseChain:self.response] next];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection*)connection didReceiveData:(NSData*)data {
     if(canceled) return;
     [self.response handle:data];
     self.delegate = nil;
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error {
     if(canceled) return;
     [self.response handleError:error];
     self.delegate = nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection*)connection {
     if(canceled) return;
     [self.response complete];
     self.delegate = nil;

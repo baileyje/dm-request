@@ -1,1 +1,10 @@
-COCOAPODS: 0.32.1
+PODS:
+  - DMFoundation (0.1.0)
+
+DEPENDENCIES:
+  - DMFoundation
+
+SPEC CHECKSUMS:
+  DMFoundation: 9e54d99b122f1a376ae38de1f6be59826013f941
+
+COCOAPODS: 0.33.1

@@ -2,10 +2,9 @@
 
 @class DMRequest;
 
-
 @interface DMConnection : NSObject
 
-@property(nonatomic, readonly) DMRequest*request;
+@property(nonatomic, readonly) DMRequest* request;
 
 - (void)cancel;
 

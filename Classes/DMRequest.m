@@ -1,23 +1,36 @@
 #import "DMRequest.h"
-#import "Utils.h"
+#import "DMRequestUtils.h"
 #import "DMResponse.h"
 #import "DMParamBuilder.h"
 #import "DMConnection.h"
+#import "DMEnum.h"
+#import "NSDictionary+Iterate.h"
 
-typedef enum {
-    HttpMethodGet, HttpMethodPost, HttpMethodPut, HttpMethodDelete, HttpMethodPatch, HttpMethodHead
-} HttpMethod;
+@class DMHttpMethod;
+@protocol DMHttpMethods
+@optional
++ (DMHttpMethod*)GET;
++ (DMHttpMethod*)POST;
++ (DMHttpMethod*)PUT;
++ (DMHttpMethod*)PATCH;
++ (DMHttpMethod*)DELETE;
++ (DMHttpMethod*)HEAD;
+@end
+
+@interface DMHttpMethod : DMEnum<DMHttpMethods>
+- (BOOL)supportsBody;
+@end
 
 @interface DMRequest ()
-@property(nonatomic, strong) NSURL *url;
-@property(nonatomic) HttpMethod method;
+@property(nonatomic, strong) NSURL*url;
+@property(nonatomic) DMHttpMethod* method;
 @property(nonatomic, copy) DMBodyBuilder bodyBuilder;
-@property(nonatomic, strong) NSMutableDictionary *params;
-@property(nonatomic, strong) NSMutableDictionary *headers;
+@property(nonatomic, strong) NSMutableDictionary*params;
+@property(nonatomic, strong) NSMutableDictionary*headers;
 @property(nonatomic, strong) NSMutableArray* cookies;
-@property(nonatomic, strong) NSMutableArray *requestCallbacks;
-@property(nonatomic, strong) NSMutableDictionary *responseInterceptors;
-@property(nonatomic, strong) NSMutableDictionary *responseCallbacks;
+@property(nonatomic, strong) NSMutableArray*requestCallbacks;
+@property(nonatomic, strong) NSMutableDictionary*responseInterceptors;
+@property(nonatomic, strong) NSMutableDictionary*responseCallbacks;
 @end
 
 @interface DMConnection (internals)
@@ -27,47 +40,55 @@ typedef enum {
 
 @implementation DMRequest
 
-+ (DMRequest*)get:(NSString *)url {
-    return [[DMRequest alloc] initWith:url method:HttpMethodGet];
++ (DMRequest*)requestWithUrl:(NSString*)url method:(DMHttpMethod*)method {
+    return [[DMRequest alloc] initWith:url method:method];
 }
 
-+ (DMRequest*)post:(NSString *)url {
-    return [[DMRequest alloc] initWith:url method:HttpMethodPost];
++ (DMRequest*)get:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.GET];
 }
 
-+ (DMRequest*)put:(NSString *)url {
-    return [[DMRequest alloc] initWith:url method:HttpMethodPut];
++ (DMRequest*)post:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.POST];
 }
 
-+ (DMRequest*)patch:(NSString *)url {
-    return [[DMRequest alloc] initWith:url method:HttpMethodPatch];
++ (DMRequest*)put:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.PUT];
 }
 
-+ (DMRequest*)delete:(NSString *)url {
-    return [[DMRequest alloc] initWith:url method:HttpMethodDelete];
++ (DMRequest*)patch:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.PATCH];
+}
+
++ (DMRequest*)delete:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.DELETE];
+}
+
++ (DMRequest*)head:(NSString*)url {
+    return [self requestWithUrl:url method:DMHttpMethod.HEAD];
 }
 
 - (DMRequest*)body:(DMBodyBuilder)bodyBuilder {
     if (self.bodyBuilder) {
         [NSException raise:@"Illegal state" format:@"Body callback already set."];
     }
-    if (self.method == HttpMethodGet) {
+    if (!self.method.supportsBody) {
         [NSException raise:@"Illegal state" format:@"Http method does not support a body."];
     }
     self.bodyBuilder = bodyBuilder;
     return self;
 }
 
-- (DMRequest*)param:(NSString *)name value:(NSString *)value {
-    [Utils notEmpty:@"name" string:name];
-    [Utils notEmpty:@"value" string:value];
+- (DMRequest*)param:(NSString*)name value:(NSString*)value {
+    [DMRequestUtils notEmpty:@"name" string:name];
+    [DMRequestUtils notEmpty:@"value" string:value];
     self.params[name] = value;
     return self;
 }
 
-- (DMRequest*)header:(NSString *)name value:(NSString *)value {
-    [Utils notEmpty:@"name" string:name];
-    [Utils notEmpty:@"value" string:value];
+- (DMRequest*)header:(NSString*)name value:(NSString*)value {
+    [DMRequestUtils notEmpty:@"name" string:name];
+    [DMRequestUtils notEmpty:@"value" string:value];
     self.headers[name] = value;
     return self;
 }
@@ -77,7 +98,7 @@ typedef enum {
     return self;
 }
 
-- (DMRequest*)intercept:(int)status call:(DMResponseCallback)callback {
+- (DMRequest*)intercept:(NSUInteger)status call:(DMResponseCallback)callback {
     return [self registerResponseCallback:callback status:status registry:self.responseInterceptors];
 }
 
@@ -88,7 +109,7 @@ typedef enum {
     return [self intercept:5 call:callback];
 }
 
-- (DMRequest*)on:(int)status call:(DMResponseCallback)callback {
+- (DMRequest*)on:(NSUInteger)status call:(DMResponseCallback)callback {
     return [self registerResponseCallback:callback status:status registry:self.responseCallbacks];
 }
 
@@ -120,29 +141,30 @@ typedef enum {
 }
 
 - (DMRequest*)auth:(DMRequestCallback)authenticator {
-    [Utils notNull:@"authenticator" value:authenticator];
+    [DMRequestUtils notNull:@"authenticator" value:authenticator];
     [self.requestCallbacks addObject:authenticator];
     return self;
 }
 
 - (DMConnection*)fetch {
     DMConnection* connection = [[DMConnection alloc] initWith:self];
-    [[[DMCallbackChain alloc] initWith:self callbacks:[self.requestCallbacks arrayByAddingObject:^(DMRequest*request, Callable next) {
+    [[[DMCallbackChain alloc] initWith:self callbacks:[self.requestCallbacks arrayByAddingObject:^(DMRequest*request, DMCallback next) {
         [request connect:connection];
     }]] next];
     return connection;
 }
 
-- (id)initWith:(NSString *)url method:(HttpMethod)method {
-    self = [super init];
-    self.url = [NSURL URLWithString:url];
-    self.method = method;
-    self.params = [NSMutableDictionary dictionary];
-    self.headers = [NSMutableDictionary dictionary];
-    self.cookies = [NSMutableArray array];
-    self.requestCallbacks = [NSMutableArray array];
-    self.responseInterceptors = [NSMutableDictionary dictionary];
-    self.responseCallbacks = [NSMutableDictionary dictionary];
+- (id)initWith:(NSString*)url method:(DMHttpMethod*)method {
+    if(self = [super init]) {
+        self.url = [NSURL URLWithString:url];
+        self.method = method;
+        self.params = [NSMutableDictionary dictionary];
+        self.headers = [NSMutableDictionary dictionary];
+        self.cookies = [NSMutableArray array];
+        self.requestCallbacks = [NSMutableArray array];
+        self.responseInterceptors = [NSMutableDictionary dictionary];
+        self.responseCallbacks = [NSMutableDictionary dictionary];
+    }
     return self;
 }
 
@@ -152,8 +174,8 @@ typedef enum {
     DMBodyBuilder bodyBuilder = self.bodyBuilder;
     NSURL* url = self.url;
     if (self.params.count) {
-        if (bodyBuilder || self.method == HttpMethodGet) {
-            NSString *query = self.url.query;
+        if (bodyBuilder || self.method == DMHttpMethod.GET) {
+            NSString* query = self.url.query;
             if (!query || query.length == 0) {
                 query = [DMParamBuilder for:self.params];
             } else {
@@ -164,33 +186,11 @@ typedef enum {
             bodyBuilder = [DMParamBuilder for:self.params request:self];
         }
     }
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    NSString* method;
-    switch (self.method) {
-        case HttpMethodPost: {
-            method = @"POST";
-            break;
-        } case HttpMethodPut: {
-            method = @"PUT";
-            break;
-        } case HttpMethodPatch: {
-            method = @"PATCH";
-            break;
-        } case HttpMethodDelete: {
-            method = @"DELETE";
-            break;
-        } case HttpMethodHead: {
-            method = @"HEAD";
-            break;
-        } default: {
-            method = @"GET";
-            break;
-        }
-    }
-    [request setHTTPMethod:method];
+    NSMutableURLRequest*request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:self.method.name];
     NSMutableDictionary* headers = [NSMutableDictionary dictionaryWithDictionary:self.headers];
     [headers addEntriesFromDictionary:[NSHTTPCookie requestHeaderFieldsWithCookies:self.cookies]];
-    [headers enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString *value, BOOL *stop) {
+    [headers each:^(NSString* name, NSString* value) {
         [request addValue:value forHTTPHeaderField:name];
     }];
     if (bodyBuilder) {
@@ -201,8 +201,8 @@ typedef enum {
 }
 
 - (DMCallbackChain*)buildResponseChain:(DMResponse*)response {
-    int status = response.statusCode;
-    NSMutableArray *allCallbacks = [NSMutableArray array];
+    NSInteger status = response.statusCode;
+    NSMutableArray* allCallbacks = [NSMutableArray array];
     [self fillResponseCallbacksFor:status from:self.responseInterceptors into:allCallbacks];
     [self fillResponseCallbacksFor:status from:self.responseCallbacks into:allCallbacks];
     DMCallbackChain*chain = [[DMCallbackChain alloc] initWith:response callbacks:allCallbacks];
@@ -211,23 +211,35 @@ typedef enum {
 
 #pragma mark - private
 
-- (DMRequest*)registerResponseCallback:(DMResponseCallback)callback status:(int)status registry:(NSMutableDictionary *)registry {
-    [Utils notNull:@"callback" value:callback];
-    [Utils notNull:@"registry" value:registry];
-    NSMutableArray *callbacks = registry[[NSNumber numberWithInt:status]];
+- (DMRequest*)registerResponseCallback:(DMResponseCallback)callback status:(NSUInteger)status registry:(NSMutableDictionary*)registry {
+    [DMRequestUtils notNull:@"callback" value:callback];
+    [DMRequestUtils notNull:@"registry" value:registry];
+    NSMutableArray* callbacks = registry[[NSNumber numberWithUnsignedInteger:status]];
     if (!callbacks) {
         callbacks = [NSMutableArray array];
-        registry[[NSNumber numberWithInt:status]] = callbacks;
+        registry[[NSNumber numberWithUnsignedInteger:status]] = callbacks;
     }
     [callbacks addObject:callback];
     return self;
 }
 
-- (void)fillResponseCallbacksFor:(int)statusCode from:(NSDictionary *)registry into:(NSMutableArray *)into {
-    for (int status = statusCode; status > 0; status /= 10) {
-        NSArray *callbacks = registry[[NSNumber numberWithInt:status]];
+- (void)fillResponseCallbacksFor:(NSUInteger)statusCode from:(NSDictionary*)registry into:(NSMutableArray*)into {
+    for (NSUInteger status = statusCode; status > 0; status /= 10) {
+        NSArray* callbacks = registry[[NSNumber numberWithUnsignedInteger:status]];
         if (callbacks) [into addObjectsFromArray:callbacks];
     }
+}
+
+@end
+
+@implementation DMHttpMethod
+
++ (NSString*)nameFor:(NSString*)label {
+    return label;
+}
+
+- (BOOL)supportsBody {
+    return !(self == DMHttpMethod.GET || self == DMHttpMethod.HEAD);
 }
 
 @end

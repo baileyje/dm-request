@@ -4,6 +4,6 @@
 
 @interface DMJsonResponseCallback : NSObject
 
-+(DMResponseCallback)with:(void(^)(DMResponse* response, NSObject *))json;
++ (DMResponseCallback)with:(void(^)(DMResponse*, NSObject*))callback;
 
 @end

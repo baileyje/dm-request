@@ -41,7 +41,7 @@ Pod::Spec.new do |spec|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  # None
+  spec.dependency 'DMFoundation', '~> 0.0.2'
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

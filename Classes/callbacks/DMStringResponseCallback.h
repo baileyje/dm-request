@@ -4,6 +4,6 @@
 
 @interface DMStringResponseCallback : NSObject
 
-+ (DMResponseCallback)with:(void (^)(DMResponse* response, NSString *string))handler;
++ (DMResponseCallback)with:(void (^)(DMResponse*, NSString*))handler;
 
 @end

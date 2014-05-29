@@ -6,6 +6,6 @@
 
 @interface DMBufferingResponseCallback : NSObject
 
-+ (DMResponseCallback)with:(void (^)(DMResponse* response, NSData *buffer))callback;
++ (DMResponseCallback)with:(void (^)(DMResponse*, NSData*))callback;
 
 @end

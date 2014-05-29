@@ -4,6 +4,6 @@
 
 @interface DMJsonBodyBuilder : NSObject
 
-+(DMBodyBuilder)with:(NSObject *)object request:(DMRequest*)request;
++(DMBodyBuilder)with:(NSObject*)object request:(DMRequest*)request;
 
 @end

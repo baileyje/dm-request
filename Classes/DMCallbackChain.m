@@ -10,15 +10,16 @@
 
 @implementation DMCallbackChain
 
--(id)initWith:(DMResource*)resource callbacks:(NSArray *)callbacks {
-    self = [super init];
-    self.resource = resource;
-    self.callbacks = [NSMutableArray arrayWithArray:callbacks];
+- (id)initWith:(DMResource*)resource callbacks:(NSArray*)callbacks {
+    if(self = [super init]) {
+        self.resource = resource;
+        self.callbacks = [NSMutableArray arrayWithArray:callbacks];
+    }
     return self;
 }
 
--(void)next {
-    DMChainedCallback callback = [self.callbacks dequeue];
+- (void)next {
+    DMChainedCallback callback = self.callbacks.dequeue;
     if(!callback) {
         [self done];
     } else {
@@ -28,7 +29,7 @@
     }
 }
 
--(void)done {
+- (void)done {
 }
 
 @end

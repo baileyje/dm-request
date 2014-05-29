@@ -7,23 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84069CCBC5C04D6C9AC984C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB021CE30FD4459A7F7986F /* libPods.a */; };
+		88BE206F7C40C61562689FE9 /* DMRequestTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88BE2A2FDE2F2A639EA0B4C0 /* DMRequestTests-Info.plist */; };
+		88BE208ED3EF76961C874204 /* DMParamBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2C86507AED1B203C636D /* DMParamBuilder.m */; };
 		88BE20A6641D3A69433343EE /* DMStringResponseCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE28014C10C0949EBEC4BB /* DMStringResponseCallback.m */; };
-		88BE20C9291CAC47A1E29F5D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2570A7162CDA936777BA /* Utils.m */; };
 		88BE20D90F89879F4E802B35 /* DMResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2CE794DDD6DA6FE8A3AF /* DMResponse.m */; };
-		88BE23EB9542CC720C18FA35 /* DMBearerAuthRequestInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestInitializer.m */; };
-		88BE2407B9E961B9580BEC53 /* DMJsonBodyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2C0222F0B559D846D6F5 /* DMJsonBodyBuilder.m */; };
-		88BE254B63B0DC972B3774DA /* DMCallbackChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2BD9E616664C7927DD43 /* DMCallbackChain.m */; };
+		88BE23EB9542CC720C18FA35 /* DMBearerAuthRequestCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestCallback.m */; };
+		88BE245BE56249F8A6510FFA /* ParamBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2DA390F97C376EE5775A /* ParamBuilderTest.m */; };
 		88BE257B531727A496512D34 /* DMRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2E9BC9980B6027118AEE /* DMRequest.m */; };
 		88BE25A7645C383FFBCBB59A /* DMJsonResponseCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2235CD7D878D8B54B944 /* DMJsonResponseCallback.m */; };
+		88BE266FDF1788C9DA880E01 /* DMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2C2EEDA013F09801BE65 /* DMResource.m */; };
 		88BE26F1F64D2A49074BB999 /* DMConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE274E5FBD9E35BB545D47 /* DMConnection.m */; };
-		88BE2773596CEF2D9DE83BE6 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE21CDFD1B14E7C959D86E /* NSMutableArray+Queue.m */; };
-		88BE28BD032086139F6CD21E /* NSArray+Reduce.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2555BE625DAB54D0F629 /* NSArray+Reduce.m */; };
+		88BE27805F5F4AE722E18BCA /* DMCallbackChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2388543E31570DEDF1CA /* DMCallbackChain.m */; };
+		88BE28694CD2E6CF1FD9B230 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE228826F1526DE452B6F2 /* XCTest.framework */; };
+		88BE2A104FB4246D0D200A70 /* DMRequestUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE29F77390DAF49E4CBE3A /* DMRequestUtils.m */; };
 		88BE2A7AFECF1F9119AAE161 /* DMParamBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2C86507AED1B203C636D /* DMParamBuilder.m */; };
-		88BE2C1A050F9012FAEF64A4 /* DMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2A0CE51E99072286530F /* DMResource.m */; };
+		88BE2B4BA54F8B3408651AD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2E90AEDB4C45929C697C /* Foundation.framework */; };
+		88BE2C94AD0C757A854EFD02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88BE2FBDBD5EA3605C65C3B9 /* InfoPlist.strings */; };
 		88BE2CC385F85636C2CD6D2B /* DMBufferingResponseCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE221DCEF1D6A26D390F6B /* DMBufferingResponseCallback.m */; };
-		88BE2D154511A7F91816E9A5 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE272A86649414F7628B0F /* Base64.m */; };
-		88BE2D6B4F81C3BF6C71CA9E /* DMBasicAuthRequestInitializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE216B55206C26415095D9 /* DMBasicAuthRequestInitializer.m */; };
+		88BE2D6B4F81C3BF6C71CA9E /* DMBasicAuthRequestCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE216B55206C26415095D9 /* DMBasicAuthRequestCallback.m */; };
+		88BE2DB2C00EBFE81D3B433A /* DMJsonBodyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE24EE113A5E91E1CFE81F /* DMJsonBodyBuilder.m */; };
 		88BE2EB1060CF825F3FA6C8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2E90AEDB4C45929C697C /* Foundation.framework */; };
+		B67063151936C83D0066BC0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67063141936C83D0066BC0C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,74 +44,74 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBearerAuthRequestInitializer.m; sourceTree = "<group>"; };
+		20748AF16BE84D5BB1A5AA0A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBearerAuthRequestCallback.m; sourceTree = "<group>"; };
 		88BE20B55CF41597533C84D8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
 		88BE20B82A49F434597C82D4 /* Rakefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rakefile; sourceTree = "<group>"; };
 		88BE20DC84B6D4F8F024D77A /* libDMRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDMRequest.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE2112737BE37C11CE3C7C /* DMRequest.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = DMRequest.podspec; sourceTree = "<group>"; };
-		88BE216B55206C26415095D9 /* DMBasicAuthRequestInitializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBasicAuthRequestInitializer.m; sourceTree = "<group>"; };
-		88BE21CDFD1B14E7C959D86E /* NSMutableArray+Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Queue.m"; sourceTree = "<group>"; };
+		88BE216B55206C26415095D9 /* DMBasicAuthRequestCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBasicAuthRequestCallback.m; sourceTree = "<group>"; };
 		88BE221DCEF1D6A26D390F6B /* DMBufferingResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMBufferingResponseCallback.m; sourceTree = "<group>"; };
 		88BE2235CD7D878D8B54B944 /* DMJsonResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMJsonResponseCallback.m; sourceTree = "<group>"; };
 		88BE228826F1526DE452B6F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		88BE22BF82C32762DC0ABF22 /* DMConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConnection.h; sourceTree = "<group>"; };
-		88BE239E7AA19B288184CA93 /* DMBasicAuthRequestInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBasicAuthRequestInitializer.h; sourceTree = "<group>"; };
+		88BE2388543E31570DEDF1CA /* DMCallbackChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCallbackChain.m; sourceTree = "<group>"; };
+		88BE23941B415A9D9D5B536B /* DMCallbackChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCallbackChain.h; sourceTree = "<group>"; };
+		88BE239E7AA19B288184CA93 /* DMBasicAuthRequestCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBasicAuthRequestCallback.h; sourceTree = "<group>"; };
 		88BE23E9E62AD7F9DB87715C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		88BE24680766BA2879BA1D6F /* DMRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRequest.h; sourceTree = "<group>"; };
-		88BE246D29ADD3E6A5EA1656 /* DMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMResource.h; sourceTree = "<group>"; };
 		88BE24EA6899A9D905CE9C85 /* DMRequest-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DMRequest-Prefix.pch"; sourceTree = "<group>"; };
-		88BE2555BE625DAB54D0F629 /* NSArray+Reduce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Reduce.m"; sourceTree = "<group>"; };
-		88BE2570A7162CDA936777BA /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		88BE2604F30765638615ADF5 /* DMBearerAuthRequestInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBearerAuthRequestInitializer.h; sourceTree = "<group>"; };
-		88BE267C41E94D6C5F6861D0 /* NSMutableArray+Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Queue.h"; sourceTree = "<group>"; };
-		88BE272A86649414F7628B0F /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
-		88BE274270855C116B3C7E53 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		88BE24EE113A5E91E1CFE81F /* DMJsonBodyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMJsonBodyBuilder.m; sourceTree = "<group>"; };
+		88BE2604F30765638615ADF5 /* DMBearerAuthRequestCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBearerAuthRequestCallback.h; sourceTree = "<group>"; };
+		88BE260C75B2A8D9AF33C12B /* DMRequestUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRequestUtils.h; sourceTree = "<group>"; };
 		88BE274E5FBD9E35BB545D47 /* DMConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMConnection.m; sourceTree = "<group>"; };
 		88BE27D118CB781CD9704D2D /* DMStringResponseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMStringResponseCallback.h; sourceTree = "<group>"; };
 		88BE27E5CAE6E12F2EFD16E6 /* DMResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMResponse.h; sourceTree = "<group>"; };
 		88BE28014C10C0949EBEC4BB /* DMStringResponseCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMStringResponseCallback.m; sourceTree = "<group>"; };
-		88BE2A0CE51E99072286530F /* DMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMResource.m; sourceTree = "<group>"; };
-		88BE2A927D3999B7B643CB00 /* DMJsonBodyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMJsonBodyBuilder.h; sourceTree = "<group>"; };
-		88BE2B1FAE95B89D5399087D /* DMCallbackChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCallbackChain.h; sourceTree = "<group>"; };
-		88BE2B590A0F7CFC97520752 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		88BE2831534CEC1B6E2C7F65 /* DMRequestTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DMRequestTests-Prefix.pch"; path = "Tests/DMRequestTests-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		88BE29B238C751530939FFCF /* DMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMResource.h; sourceTree = "<group>"; };
+		88BE29F77390DAF49E4CBE3A /* DMRequestUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRequestUtils.m; sourceTree = "<group>"; };
+		88BE2A2FDE2F2A639EA0B4C0 /* DMRequestTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; name = "DMRequestTests-Info.plist"; path = "Tests/DMRequestTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		88BE2A76A8975634F8707B58 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		88BE2AC12C219422D277915C /* DMJsonBodyBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMJsonBodyBuilder.h; sourceTree = "<group>"; };
 		88BE2BBD3E357153FB03B164 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = CHANGELOG.md; sourceTree = "<group>"; };
-		88BE2BD9E616664C7927DD43 /* DMCallbackChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCallbackChain.m; sourceTree = "<group>"; };
-		88BE2BEEBB109B32755F289E /* NSArray+Reduce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Reduce.h"; sourceTree = "<group>"; };
 		88BE2C01E1307F08395AB5EA /* DMBufferingResponseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMBufferingResponseCallback.h; sourceTree = "<group>"; };
-		88BE2C0222F0B559D846D6F5 /* DMJsonBodyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMJsonBodyBuilder.m; sourceTree = "<group>"; };
+		88BE2C2EEDA013F09801BE65 /* DMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMResource.m; sourceTree = "<group>"; };
 		88BE2C86507AED1B203C636D /* DMParamBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMParamBuilder.m; sourceTree = "<group>"; };
 		88BE2CE794DDD6DA6FE8A3AF /* DMResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMResponse.m; sourceTree = "<group>"; };
-		88BE2CEFBEC2201B3623848C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		88BE2D70CFC75732E8099D3A /* DMParamBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMParamBuilder.h; sourceTree = "<group>"; };
 		88BE2D9A3D9CE7C00704DC89 /* DMJsonResponseCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMJsonResponseCallback.h; sourceTree = "<group>"; };
+		88BE2DA390F97C376EE5775A /* ParamBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParamBuilderTest.m; sourceTree = "<group>"; };
 		88BE2E90AEDB4C45929C697C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88BE2E9BC9980B6027118AEE /* DMRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRequest.m; sourceTree = "<group>"; };
-		88BE2EA65931886176D8E30F /* HttpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCommon.h; sourceTree = "<group>"; };
+		88BE2FA89ABE7A669FEA9AE6 /* DMRequestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMRequestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B67063141936C83D0066BC0C /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		FDB021CE30FD4459A7F7986F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		88BE237F1FE0CD9E2683FD56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B67063151936C83D0066BC0C /* libPods.a in Frameworks */,
+				88BE28694CD2E6CF1FD9B230 /* XCTest.framework in Frameworks */,
+				88BE2B4BA54F8B3408651AD4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		88BE24E82E30F7984EF0A280 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				88BE2EB1060CF825F3FA6C8E /* Foundation.framework in Frameworks */,
+				84069CCBC5C04D6C9AC984C0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88BE2291F9B1E161C5F2F8EA /* chain */ = {
-			isa = PBXGroup;
-			children = (
-				88BE246D29ADD3E6A5EA1656 /* DMResource.h */,
-				88BE2A0CE51E99072286530F /* DMResource.m */,
-				88BE2B1FAE95B89D5399087D /* DMCallbackChain.h */,
-				88BE2BD9E616664C7927DD43 /* DMCallbackChain.m */,
-			);
-			path = chain;
-			sourceTree = "<group>";
-		};
 		88BE251C561CA0B1EA7727FD = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +121,10 @@
 				88BE280EAC550A5A0EF67429 /* Classes */,
 				88BE24EA6899A9D905CE9C85 /* DMRequest-Prefix.pch */,
 				88BE2112737BE37C11CE3C7C /* DMRequest.podspec */,
-				88BE2CEFBEC2201B3623848C /* LICENSE */,
 				88BE20B82A49F434597C82D4 /* Rakefile */,
 				88BE20B55CF41597533C84D8 /* README.md */,
+				20748AF16BE84D5BB1A5AA0A /* Pods.xcconfig */,
+				88BE2CADBF6AC323A0B42111 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,30 +137,43 @@
 				88BE28014C10C0949EBEC4BB /* DMStringResponseCallback.m */,
 				88BE2C01E1307F08395AB5EA /* DMBufferingResponseCallback.h */,
 				88BE221DCEF1D6A26D390F6B /* DMBufferingResponseCallback.m */,
-				88BE239E7AA19B288184CA93 /* DMBasicAuthRequestInitializer.h */,
-				88BE216B55206C26415095D9 /* DMBasicAuthRequestInitializer.m */,
-				88BE2604F30765638615ADF5 /* DMBearerAuthRequestInitializer.h */,
-				88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestInitializer.m */,
+				88BE239E7AA19B288184CA93 /* DMBasicAuthRequestCallback.h */,
+				88BE216B55206C26415095D9 /* DMBasicAuthRequestCallback.m */,
+				88BE2604F30765638615ADF5 /* DMBearerAuthRequestCallback.h */,
+				88BE202F54867A3A6EA8C8B4 /* DMBearerAuthRequestCallback.m */,
 			);
 			path = callbacks;
 			sourceTree = "<group>";
 		};
+		88BE261878A70B917A7AA87D /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				88BE2FBDBD5EA3605C65C3B9 /* InfoPlist.strings */,
+			);
+			name = en.lproj;
+			path = Tests/en.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
 		88BE280EAC550A5A0EF67429 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				88BE2C956952B8A4A0F4363D /* body */,
-				88BE2D8429E01D5186549402 /* util */,
-				88BE2291F9B1E161C5F2F8EA /* chain */,
 				88BE2598F39F243B627D6049 /* callbacks */,
 				88BE24680766BA2879BA1D6F /* DMRequest.h */,
 				88BE2E9BC9980B6027118AEE /* DMRequest.m */,
 				88BE27E5CAE6E12F2EFD16E6 /* DMResponse.h */,
 				88BE2CE794DDD6DA6FE8A3AF /* DMResponse.m */,
-				88BE2EA65931886176D8E30F /* HttpCommon.h */,
 				88BE2D70CFC75732E8099D3A /* DMParamBuilder.h */,
 				88BE2C86507AED1B203C636D /* DMParamBuilder.m */,
 				88BE274E5FBD9E35BB545D47 /* DMConnection.m */,
 				88BE22BF82C32762DC0ABF22 /* DMConnection.h */,
+				88BE2388543E31570DEDF1CA /* DMCallbackChain.m */,
+				88BE29B238C751530939FFCF /* DMResource.h */,
+				88BE2C2EEDA013F09801BE65 /* DMResource.m */,
+				88BE23941B415A9D9D5B536B /* DMCallbackChain.h */,
+				88BE2AC12C219422D277915C /* DMJsonBodyBuilder.h */,
+				88BE24EE113A5E91E1CFE81F /* DMJsonBodyBuilder.m */,
+				88BE29F77390DAF49E4CBE3A /* DMRequestUtils.m */,
+				88BE260C75B2A8D9AF33C12B /* DMRequestUtils.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -162,9 +181,11 @@
 		88BE28278B1AB59FC35B7C57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B67063141936C83D0066BC0C /* libPods.a */,
 				88BE2E90AEDB4C45929C697C /* Foundation.framework */,
 				88BE228826F1526DE452B6F2 /* XCTest.framework */,
 				88BE23E9E62AD7F9DB87715C /* UIKit.framework */,
+				FDB021CE30FD4459A7F7986F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,33 +194,30 @@
 			isa = PBXGroup;
 			children = (
 				88BE20DC84B6D4F8F024D77A /* libDMRequest.a */,
+				88BE2FA89ABE7A669FEA9AE6 /* DMRequestTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88BE2C956952B8A4A0F4363D /* body */ = {
+		88BE2CADBF6AC323A0B42111 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				88BE2A927D3999B7B643CB00 /* DMJsonBodyBuilder.h */,
-				88BE2C0222F0B559D846D6F5 /* DMJsonBodyBuilder.m */,
+				88BE2F3E4CC4DE21E263CBA5 /* Supporting Files */,
+				88BE2DA390F97C376EE5775A /* ParamBuilderTest.m */,
 			);
-			path = body;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		88BE2D8429E01D5186549402 /* util */ = {
+		88BE2F3E4CC4DE21E263CBA5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				88BE2B590A0F7CFC97520752 /* Utils.h */,
-				88BE2570A7162CDA936777BA /* Utils.m */,
-				88BE274270855C116B3C7E53 /* Base64.h */,
-				88BE272A86649414F7628B0F /* Base64.m */,
-				88BE2BEEBB109B32755F289E /* NSArray+Reduce.h */,
-				88BE2555BE625DAB54D0F629 /* NSArray+Reduce.m */,
-				88BE267C41E94D6C5F6861D0 /* NSMutableArray+Queue.h */,
-				88BE21CDFD1B14E7C959D86E /* NSMutableArray+Queue.m */,
+				88BE2A2FDE2F2A639EA0B4C0 /* DMRequestTests-Info.plist */,
+				88BE2831534CEC1B6E2C7F65 /* DMRequestTests-Prefix.pch */,
+				88BE261878A70B917A7AA87D /* en.lproj */,
 			);
-			path = util;
-			sourceTree = "<group>";
+			name = "Supporting Files";
+			path = DMRequestTests;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -208,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88BE29AB85D5B3CB58D9684E /* Build configuration list for PBXNativeTarget "DMRequest" */;
 			buildPhases = (
+				F5861C541461475E88E4D177 /* Check Pods Manifest.lock */,
 				88BE21E4BFF42B3A30A61056 /* Sources */,
 				88BE24E82E30F7984EF0A280 /* Frameworks */,
 				88BE2AA4FDC5532C027C0E8B /* CopyFiles */,
+				2C8F54AAD52D4B729570A05E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +240,23 @@
 			productName = DMRequest;
 			productReference = 88BE20DC84B6D4F8F024D77A /* libDMRequest.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		88BE283D51DDD2A72CD193ED /* DMRequestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88BE2CD9C32BBC264FFFA4DA /* Build configuration list for PBXNativeTarget "DMRequestTests" */;
+			buildPhases = (
+				88BE2C3E1A90F0C267E4CD18 /* Sources */,
+				88BE237F1FE0CD9E2683FD56 /* Frameworks */,
+				88BE20642E13B8D3EE817384 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DMRequestTests;
+			productName = DMRequestTests;
+			productReference = 88BE2FA89ABE7A669FEA9AE6 /* DMRequestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -242,39 +279,103 @@
 			projectRoot = "";
 			targets = (
 				88BE2676541BEE1C08307669 /* DMRequest */,
+				88BE283D51DDD2A72CD193ED /* DMRequestTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88BE20642E13B8D3EE817384 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88BE206F7C40C61562689FE9 /* DMRequestTests-Info.plist in Resources */,
+				88BE2C94AD0C757A854EFD02 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C8F54AAD52D4B729570A05E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5861C541461475E88E4D177 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88BE21E4BFF42B3A30A61056 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BE2407B9E961B9580BEC53 /* DMJsonBodyBuilder.m in Sources */,
-				88BE20C9291CAC47A1E29F5D /* Utils.m in Sources */,
-				88BE2D154511A7F91816E9A5 /* Base64.m in Sources */,
-				88BE28BD032086139F6CD21E /* NSArray+Reduce.m in Sources */,
-				88BE2773596CEF2D9DE83BE6 /* NSMutableArray+Queue.m in Sources */,
-				88BE2C1A050F9012FAEF64A4 /* DMResource.m in Sources */,
-				88BE254B63B0DC972B3774DA /* DMCallbackChain.m in Sources */,
 				88BE25A7645C383FFBCBB59A /* DMJsonResponseCallback.m in Sources */,
 				88BE20A6641D3A69433343EE /* DMStringResponseCallback.m in Sources */,
 				88BE2CC385F85636C2CD6D2B /* DMBufferingResponseCallback.m in Sources */,
-				88BE2D6B4F81C3BF6C71CA9E /* DMBasicAuthRequestInitializer.m in Sources */,
-				88BE23EB9542CC720C18FA35 /* DMBearerAuthRequestInitializer.m in Sources */,
+				88BE2D6B4F81C3BF6C71CA9E /* DMBasicAuthRequestCallback.m in Sources */,
+				88BE23EB9542CC720C18FA35 /* DMBearerAuthRequestCallback.m in Sources */,
 				88BE257B531727A496512D34 /* DMRequest.m in Sources */,
 				88BE20D90F89879F4E802B35 /* DMResponse.m in Sources */,
 				88BE2A7AFECF1F9119AAE161 /* DMParamBuilder.m in Sources */,
 				88BE26F1F64D2A49074BB999 /* DMConnection.m in Sources */,
+				88BE27805F5F4AE722E18BCA /* DMCallbackChain.m in Sources */,
+				88BE266FDF1788C9DA880E01 /* DMResource.m in Sources */,
+				88BE2DB2C00EBFE81D3B433A /* DMJsonBodyBuilder.m in Sources */,
+				88BE2A104FB4246D0D200A70 /* DMRequestUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88BE2C3E1A90F0C267E4CD18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88BE245BE56249F8A6510FFA /* ParamBuilderTest.m in Sources */,
+				88BE208ED3EF76961C874204 /* DMParamBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		88BE2FBDBD5EA3605C65C3B9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88BE2A76A8975634F8707B58 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		88BE22222625F5FC35FFE5BC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20748AF16BE84D5BB1A5AA0A /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/DMRequest.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -282,11 +383,121 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+			};
+			name = Debug;
+		};
+		88BE298548AFA5183C2328E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/DMRequestTests-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Tests/DMRequestTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		88BE2BCA916BCF27BFE3475B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/DMRequestTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Tests/DMRequestTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
 		88BE2BCB56DAE741EE42D55B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20748AF16BE84D5BB1A5AA0A /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/DMRequest.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -294,6 +505,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};
@@ -382,6 +594,15 @@
 			buildConfigurations = (
 				88BE2BCB56DAE741EE42D55B /* Release */,
 				88BE22222625F5FC35FFE5BC /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88BE2CD9C32BBC264FFFA4DA /* Build configuration list for PBXNativeTarget "DMRequestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88BE2BCA916BCF27BFE3475B /* Debug */,
+				88BE298548AFA5183C2328E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
