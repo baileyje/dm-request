@@ -8,7 +8,6 @@
 
 @class DMHttpMethod;
 @protocol DMHttpMethods
-@optional
 + (DMHttpMethod*)GET;
 + (DMHttpMethod*)POST;
 + (DMHttpMethod*)PUT;

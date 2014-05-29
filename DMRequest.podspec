@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name = 'DMRequest'
-  spec.version = '0.2.0'
+  spec.version = '0.2.1'
   spec.summary = 'A block-based iOS HTTP request library'
   spec.description = <<-DESC
     DMRequest is a block-based HTTP request library for iOS that is flexible,
